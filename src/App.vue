@@ -45,6 +45,14 @@ export default {
       incorrectColor: "#666666"
     }
   },
+  watch: {
+    tentativa() {
+      if(this.tentativa == 6){
+        alert("Você perdeu!")
+        this.reiniciar()
+      }
+    }
+  },
   computed: {
     lettersInWordChoice() {
       const lettersInWordChoice = {}
@@ -167,25 +175,28 @@ export default {
     ganhou() {
       if(this.word == this.wordChoice){
         alert("Você ganhou!")
-        if(confirm("Deseja jogar novamente?")){
-          this.wordChoice = this.fetchRandomWord()
-          this.tentativa = 0
-          this.word = ""
-          this.letters = [
-            ["", "", "", "", ""],
-            ["", "", "", "", ""],
-            ["", "", "", "", ""],
-            ["", "", "", "", ""],
-            ["", "", "", "", ""],
-            ["", "", "", "", ""]
-          ]
-
-          const spans = document.querySelectorAll('span')
-          spans.forEach(span => span.style.backgroundColor = "#14161C")
-        }
+        this.reiniciar()
       } else {
         this.tentativa++
         this.word = ""
+      }
+    },
+    reiniciar() {
+      if(confirm("Deseja jogar novamente?")){
+        this.wordChoice = this.fetchRandomWord()
+        this.tentativa = 0
+        this.word = ""
+        this.letters = [
+          ["", "", "", "", ""],
+          ["", "", "", "", ""],
+          ["", "", "", "", ""],
+          ["", "", "", "", ""],
+          ["", "", "", "", ""],
+          ["", "", "", "", ""]
+        ]
+
+        const spans = document.querySelectorAll('span')
+        spans.forEach(span => span.style.backgroundColor = "#14161C")
       }
     }
   },
