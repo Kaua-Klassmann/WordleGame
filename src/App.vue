@@ -30,7 +30,6 @@ export default {
   data() {
     return {
       wordChoice: "",
-      lettersInWordChoice: {},
       letters: [
         ["", "", "", "", ""],
         ["", "", "", "", ""],
@@ -46,6 +45,21 @@ export default {
       incorrectColor: "#666666"
     }
   },
+  computed: {
+    lettersInWordChoice() {
+      const lettersInWordChoice = {}
+
+      for(let i = 0; i < this.wordChoice.length; i++){
+        if(isNaN(lettersInWordChoice[this.wordChoice[i]])) {
+          lettersInWordChoice[this.wordChoice[i]] = 1
+        } else {
+          lettersInWordChoice[this.wordChoice[i]]++
+        }
+      }
+
+      return lettersInWordChoice
+    }
+  },
   methods: {
     async fetchRandomWord() {
       try {
@@ -56,16 +70,6 @@ export default {
         console.log(this.wordChoice);
       } catch(error) {
         this.wordChoice =  "floor"
-      }
-
-      this.lettersInWordChoice = {}
-
-      for(let i = 0; i < this.wordChoice.length; i++){
-        if(isNaN(this.lettersInWordChoice[this.wordChoice[i]])) {
-          this.lettersInWordChoice[this.wordChoice[i]] = 1
-        } else {
-          this.lettersInWordChoice[this.wordChoice[i]]++
-        }
       }
     },
     actionButton(value) {
