@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <!-- Teclado -->o
+    <!-- Teclado -->
     <Teclado v-once/>
   </body>
 </template>
