@@ -4,7 +4,7 @@ Copy of the Wordle game, where the goal is to figure out the random word through
 
 ## Site to test
 
-https://wordle-kaua.netlify.app/
+https://wordle-klassmann.netlify.app/
 
 
 ### Project Setup
