@@ -220,7 +220,7 @@ export default {
 
 <style scoped>
 body {
-  height: 100vh;
+  min-height: 100vh;
   max-width: 100vw;
   background-color: #14161C;
 }

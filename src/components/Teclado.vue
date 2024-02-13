@@ -52,7 +52,7 @@ button:active {
   background-color: #596162;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 901px) {
   .letter {
     font-size: 22px;
     min-width: 3vw;
