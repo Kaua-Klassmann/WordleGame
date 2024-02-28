@@ -47,17 +47,17 @@ button:active {
   background-color: #596162;
 }
 
-@media (min-width: 901px) {
-  .letter {
-    font-size: 22px;
-    min-width: 3vw;
-  }
-}
-
 @media (min-width: 769px) {
   .letter {
     font-size: 19px;
     min-width: 6vw;
+  }
+}
+
+@media (min-width: 901px) {
+  .letter {
+    font-size: 22px;
+    min-width: 5vw;
   }
 }
 </style>
