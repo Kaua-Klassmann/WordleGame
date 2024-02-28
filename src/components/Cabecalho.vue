@@ -4,12 +4,6 @@
     </nav>
 </template>
 
-<script>
-export default {
-    name: "Cabecalho"
-}
-</script>
-
 <style scoped>
 nav {
     height: 8vh;
