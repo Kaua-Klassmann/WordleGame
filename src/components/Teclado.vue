@@ -10,19 +10,14 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: "Teclado",
-    data() {
-        return {
-            keyboard: [
-                ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-                ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-                ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "⌫"]
-            ],
-        }
-    }
-}
+<script setup>
+import { ref } from 'vue';
+
+const keyboard = ref([
+  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+  ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+  ["ENTER", "Z", "X", "C", "V", "B", "N", "M", "⌫"]
+])
 </script>
 
 <style scoped>
@@ -44,7 +39,7 @@ export default {
   min-height: 6vh;
   min-width: 7vw;
   background-color: #818384;
-  font-size: 19px;
+  font-size: 16px;
   border-width: 0;
 }
 
@@ -56,6 +51,13 @@ button:active {
   .letter {
     font-size: 22px;
     min-width: 3vw;
+  }
+}
+
+@media (min-width: 769px) {
+  .letter {
+    font-size: 19px;
+    min-width: 6vw;
   }
 }
 </style>
