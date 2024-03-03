@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { ref, watch, computed } from 'vue';
+import { ref, watch, computed, onMounted } from 'vue';
 
 import Cabecalho from './components/Cabecalho.vue';
 import Teclado from './components/Teclado.vue';
@@ -54,6 +54,30 @@ async function fetchRandomWord(){
 
 fetchRandomWord()
 
+function actionButton(value) {
+  if(tentativa < 6){
+    if(value == "ENTER"){
+      if(word.length == 5){
+        domColor()
+      }
+    } else if(value == "⌫"){ 
+      word = word.slice(0, word.length-1)
+    } else if(word.length < 5){
+      word = word + value.toUpperCase()
+    }
+    // MODIFICAR NO DOM
+    for(let i = 0; i < 5; i++){
+      try{
+        letters.value[tentativa][i] = word[i]
+      } catch {
+        try{
+          letters.value[tentativa][i] = ""
+        } catch{null}
+      }
+    }
+  }
+}
+
 function actionKeydown(event){
   if(tentativa < 6){
     if(event.key == "Enter"){
@@ -78,11 +102,13 @@ function actionKeydown(event){
   }
 }
 
-const buttons = document.querySelectorAll("button")
-buttons.forEach(button => {
-  button.addEventListener("click", () => {
-    //const value = button.textContent
-    //actionButton(value)
+onMounted(() => {
+  const buttons = document.querySelectorAll("button")
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const value = button.textContent
+      actionButton(value)
+    })
   })
 })
 
@@ -153,7 +179,7 @@ function domColor() {
         jaForam[word[letter]] = 0
       }
 
-      if(lettersInWordChoice[word[letter]] > jaForam[word[letter]] && 
+      if(lettersInWordChoice.value[word[letter]] > jaForam[word[letter]] && 
       lettersInWord[word[letter]] > jaForam[word[letter]]) {
         selectedLetter.style.backgroundColor = mediumCorrectColor
         jaForam[word[letter]]++
