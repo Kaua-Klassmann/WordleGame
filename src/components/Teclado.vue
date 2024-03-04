@@ -27,7 +27,6 @@ const keyboard = ref([
 
 .keyboard {
   margin-top: 5vh;
-  max-width: 100vw;
 }
 
 .linha {
