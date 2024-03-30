@@ -141,6 +141,7 @@ function ganhou() {
     reiniciar()
   } else {
     if(tentativa == 5){
+      alert("Você perdeu!")
       reiniciar()
       return
     }
