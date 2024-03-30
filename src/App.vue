@@ -140,6 +140,10 @@ function ganhou() {
     alert("Você ganhou!")
     reiniciar()
   } else {
+    if(tentativa == 5){
+      reiniciar()
+      return
+    }
     tentativa++
     word = ""
   }
